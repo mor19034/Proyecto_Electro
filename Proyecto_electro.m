@@ -1,5 +1,6 @@
 #Proyecto de teor�a electromagn�tica
 clear; close all; clc;
+
 b = 8;
 a = 1;
 q1 = 1e-9;
@@ -150,3 +151,23 @@ plot(x4,y4);
 xlabel("Distancia de r > 2b");
 ylabel("Campo electrico");
 title("Campo Electrico Vs Distancia",'FontSize',25);
+
+
+for x = 0:b
+  x = linspace(-10,b,11);
+  y = x';
+  teta =2*pi
+  phi =pi
+  f = (Po.*((sin(teta)*cos(phi))+(sin(teta)*sin(phi))+(cos(teta))))./(epsilon.*(4.*pi).*(x.^2+y.^2));
+  [px,py] = gradient(f);
+
+endfor
+  figure
+  contour(x,y,f)
+  hold on
+  quiver(x,y,px,py)
+  hold off
+  xlabel("X");
+ ylabel("Y");
+ zlabel("Z");
+ title("Campo electrico dipolo1",'FontSize',45);
